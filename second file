@@ -1,0 +1,19 @@
+import os
+import subprocess
+
+# Step 1: Create a new file
+file_name = "myfile.txt"
+with open(file_name, "w") as f:
+    f.write("This file was created by a Python script.\n")
+
+# Step 2: Initialize Git repository (if not already initialized)
+if not os.path.exists(".git"):
+    subprocess.run(["git", "init"], check=True)
+
+# Step 3: Add the file to Git
+subprocess.run(["git", "add", file_name], check=True)
+
+# Step 4: Commit the change
+subprocess.run(["git", "commit", "-m", "Add myfile.txt created by Python script"], check=True)
+
+print("File created and committed to Git successfully!")
